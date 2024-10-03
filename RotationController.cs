@@ -7,12 +7,12 @@ public class RotationController : MonoBehaviour
     public class RotationSettings
     {
         public GameObject objectToRotate; // The 3D GameObject to rotate
-        public float rotationSpeed; // The speed of rotation
         [HideInInspector]
         public Vector3 rotationDirection; // The direction of rotation (automatically set)
     }
 
     public List<RotationSettings> objectsToRotate = new List<RotationSettings>();
+    public float rotationSpeed = 10f; // Single speed for all objects
 
     private void Start()
     {
@@ -43,8 +43,8 @@ public class RotationController : MonoBehaviour
         {
             if (rotationSettings.objectToRotate != null)
             {
-                // Rotate the object based on the automatically assigned direction and user-defined speed
-                rotationSettings.objectToRotate.transform.Rotate(rotationSettings.rotationDirection * rotationSettings.rotationSpeed * Time.deltaTime);
+                // Rotate the object based on the automatically assigned direction and common speed
+                rotationSettings.objectToRotate.transform.Rotate(rotationSettings.rotationDirection * rotationSpeed * Time.deltaTime);
             }
         }
     }
